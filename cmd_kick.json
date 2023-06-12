@@ -1,0 +1,16 @@
+{
+    "name": "kick_all",
+    "description": "!!DANGEROUS!! This command will kick your guild's ENTIRE members",
+    "checks":{
+        "role_id": 1
+    },
+    "messages":{
+        "error": {
+            "on_exception": "An unexpected exception has occurred due to the following error:\n{content}",
+            "on_missing_role": "You do not have a role which is permitted to execute this command."
+        },
+        "success": {
+            "on_success": "Your kick request has been successfully completed."
+        }
+    }
+}
