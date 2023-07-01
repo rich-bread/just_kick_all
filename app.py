@@ -4,7 +4,6 @@ import discord
 from discord.ext import commands
 from colorama import Back, Fore, Style
 from datetime import datetime
-import json
 
 class Client(commands.Bot):
     def __init__(self):
