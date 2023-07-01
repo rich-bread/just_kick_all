@@ -7,7 +7,7 @@ cmd_file = open('cmd_kick.json') #open command file
 cmd_data = json.load(cmd_file) #load command file
 
 class KickAll(commands.Cog):
-    def __init__(self, client):
+    def __init__(self, client: discord.Client):
         self.client = client
         self.cmd_data = cmd_data
 
@@ -22,6 +22,8 @@ class KickAll(commands.Cog):
             members_id = avoids_data['members_id'] #get members id who you want to avoid from kicking
             roles_id = avoids_data['roles_id'] #get roles id which you want to avoid from kicking
             for member in members:
+                if member.id == self.client.user.id: continue #continue if the member is this client
+                if member.id == interaction.user.id: continue #continue if the member is the author of the executed command
                 if member.id in members_id: continue #continue if the member is in the avoid list
                 for member_role in member.roles:
                     if member_role.id in roles_id: continue #continue if the member has the role to be avoided
