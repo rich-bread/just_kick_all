@@ -29,6 +29,6 @@ config_file = open('config.json') #open config file
 config_data = json.load(config_file) #load config file
 
 client = Client()
-TOKEN = config_data["token"]
+TOKEN = os.getenv('DISCORD_BOT_TOKEN')
 
 client.run(TOKEN)

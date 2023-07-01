@@ -22,12 +22,18 @@ class KickAll(commands.Cog):
             members_id = avoids_data['members_id'] #get members id who you want to avoid from kicking
             roles_id = avoids_data['roles_id'] #get roles id which you want to avoid from kicking
             for member in members:
+                print(f"Current subject is: {member}")
                 if member.id == self.client.user.id: continue #continue if the member is this client
                 if member.id == interaction.user.id: continue #continue if the member is the author of the executed command
                 if member.id in members_id: continue #continue if the member is in the avoid list
                 for member_role in member.roles:
-                    if member_role.id in roles_id: continue #continue if the member has the role to be avoided
+                    if member_role.id in roles_id: 
+                        role_bool = False #set bool as False when member has the role to be avoided
+                        break
+                    else: role_bool = True #set bool as True when member does not have the role to be avoided
+                if role_bool != True: continue #continue if the member has the role to be avoided
                 await member.kick() #kick member / if you want to add a reason, add here
+                print(f"Kicked: {str(member)}")
 
         except Exception as e:
             emsg = self.cmd_data['messages']['error']['on_exception'].format(content=e) #error message
