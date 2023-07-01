@@ -24,9 +24,6 @@ class Client(commands.Bot):
         print(prfx + " Python Version " + Fore.YELLOW + str(platform.python_version()))
         synced = await self.tree.sync()
         print(prfx + " Slash Commands Synced " + Fore.YELLOW + str(len(synced)) + " Commands")
-        
-config_file = open('config.json') #open config file
-config_data = json.load(config_file) #load config file
 
 client = Client()
 TOKEN = os.getenv('DISCORD_BOT_TOKEN')
